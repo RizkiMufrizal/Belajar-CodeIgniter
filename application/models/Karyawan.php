@@ -13,11 +13,11 @@
 class Karyawan extends CI_Model {
 
     public function getKaryawans($page, $size) {
-        return $this->db->get('karyawan', $size, $page);
+        return $this->db->get('tb_karyawan', $size, $page);
     }
 
     public function getCountKaryawan() {
-        return $this->db->count_all_results('karyawan', FALSE);
+        return $this->db->count_all_results('tb_karyawan', FALSE);
     }
 
 }
