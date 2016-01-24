@@ -10,7 +10,7 @@
   
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="Belajar-CodeIgniter">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,13 +25,19 @@
         <![endif]-->
 
         <?php $this->load->view('layout/LibraryCSS') ?>
+        <?php $this->load->view('layout/LibraryAngularCSS') ?>
 
     </head>
     <body>
 
         <?php $this->load->view('layout/Header') ?>
 
+        <div ui-view="lazyLoadView">
+
+        </div>
+
         <?php $this->load->view('layout/LibraryJS') ?>
+        <?php $this->load->view('layout/LibraryAngularJS') ?>
     </body>
 </html>
 
