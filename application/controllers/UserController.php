@@ -26,7 +26,7 @@ class UserController extends CI_Controller {
             );
             $this->load->view('user/LoginView', $dataCsrf);
         } else {
-            redirect('admin/kuliner');
+            redirect('admin');
         }
     }
 
@@ -39,10 +39,15 @@ class UserController extends CI_Controller {
                 'isLogin' => TRUE,
                 'username' => $email
             ));
-            print_r('berhasil');
+            redirect('admin');
         } else {
             redirect('login');
         }
+    }
+
+    public function LogoutProcess() {
+        $this->session->unset_userdata(array('isLogin', 'username'));
+        redirect('login');
     }
 
 }
