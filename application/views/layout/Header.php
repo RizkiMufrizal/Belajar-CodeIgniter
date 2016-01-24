@@ -46,10 +46,16 @@
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><?php echo $this->session->userdata('username'); ?></a></li>
-                <li><a href="<?php echo base_url(); ?>index.php/logout">Logout</a></li>
-            </ul>
+            <?php
+            $session = $this->session->userdata('isLogin');
+
+            if ($session == TRUE) {
+                ?>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><?php echo $this->session->userdata('username'); ?></a></li>
+                    <li><a href="<?php echo base_url(); ?>index.php/logout">Logout</a></li>
+                </ul>
+            <?php } ?>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
