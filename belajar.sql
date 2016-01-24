@@ -9,11 +9,20 @@
  * 
  */
 
-create table karyawan(
+create table if not exists tb_karyawan (
     idKaryawan int not null auto_increment,
     nama varchar(50) not null,
     jenisKelamin varchar(5) not null,
     tanggalLahir date not null,
     alamat varchar(150) not null,
     primary key(idKaryawan)
+)Engine=InnoDB;
+
+create table if not exists tb_user (
+    email varchar(50) not null,
+    nama varchar(50) not null,
+    password varchar(50) not null,
+    enable tinyint,
+    role varchar(10),
+    primary key(email)
 )Engine=InnoDB;
