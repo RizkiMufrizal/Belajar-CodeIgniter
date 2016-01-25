@@ -10,12 +10,15 @@
  * @Package Expression package is undefined on line 12, column 15 in Templates/Scripting/PHPClass.php.
  * 
  */
-require APPPATH . '/libraries/Uuid.php';
-
 class Karyawan extends CI_Model {
 
     public function getKaryawans($page, $size) {
         return $this->db->get('tb_karyawan', $size, $page);
+    }
+
+    public function getKaryawan($key, $value) {
+        $this->db->where("$key", $value);
+        return $this->db->get('tb_karyawan');
     }
 
     public function getCountKaryawan() {
