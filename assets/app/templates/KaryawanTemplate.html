@@ -16,14 +16,36 @@
 
     <div ng-show="karyawan.dataKaryawan.length !== 0">
 
-        <button ng-click="karyawan.newKaryawan()" data-toggle="modal" data-target="#modal" type="button" class="btn btn-primary">
-          Tambah Data
-        </button>
+        <div class="row">
+            <div class="col-md-1">
+                <button ng-click="karyawan.newKaryawan()" data-toggle="modal" data-target="#modal" type="button" class="btn btn-primary">
+                    Tambah <i class="glyphicon glyphicon-plus"></i>
+                </button>
+            </div>
+            <div class="col-md-1">
+                <button ng-click="karyawan.getKaryawans()" type="button" class="btn btn-default">
+                    <i class="glyphicon glyphicon-refresh"></i>
+                </button>
+            </div>
+            <div class="col-md-2">
+                <select class="form-control" ng-model="key">
+                    <option value="idKaryawan">ID Karyawan</option>
+                    <option value="nama">Nama</option>
+                </select>
+            </div>
+            <div class="col-md-8">
+                <div class="input-group">
+                    <input type="text" ng-model="value" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button ng-click="karyawan.getKaryawan(key, value)" class="btn btn-default" type="button">Go!</button>
+                    </span>
+                </div>
+            </div>
+        </div>
 
         <p>
-            
-        </p>
 
+        </p>
         <table class="table table-hover table-bordered table-responsive">
             <thead>
                 <tr>
@@ -53,6 +75,19 @@
                 </tr>
             </tbody>
         </table>
+
+        <div class="btn-group" role="group">
+            <button ng-disabled="karyawan.hasPreviousPage()" ng-click="karyawan.previousPage()" type="button" class="btn btn-default">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+            </button>
+            <button type="button" class="btn btn-default" disabled>
+                {{karyawan.paging.page}} dari {{karyawan.paging.totalPages}}
+            </button>
+            <button ng-disabled="karyawan.hasNextPage()" ng-click="karyawan.nextPage()" type="button" class="btn btn-default">
+                <i class="glyphicon glyphicon-chevron-right"></i>
+            </button>
+        </div>
+
     </div>
 
     <div class="text-center" ng-hide="karyawan.dataKaryawan.length !== 0">
