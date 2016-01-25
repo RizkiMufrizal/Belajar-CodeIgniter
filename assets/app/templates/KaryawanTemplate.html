@@ -15,39 +15,90 @@
 <div class="container">
 
     <div ng-show="karyawan.dataKaryawan.length !== 0">
+
+        <button ng-click="karyawan.newKaryawan()" data-toggle="modal" data-target="#modal" type="button" class="btn btn-primary">
+          Tambah Data
+        </button>
+
+        <p>
+            
+        </p>
+
         <table class="table table-hover table-bordered table-responsive">
-          <thead>
-              <tr>
-                  <th>ID Karyawan</th>
-                  <th>Nama Karyawan</th>
-                  <th>Jenis Kelamin</th>
-                  <th>Tanggal Lahir</th>
-                  <th>Alamat</th>
-                  <th>Aksi</th>
-              </tr>
-          </thead>
-          <tbody ng-repeat="k in karyawan.dataKaryawan">
-              <tr>
-                  <td>{{k.idKaryawan}}</td>
-                  <td>{{k.nama}}</td>
-                  <td>{{k.jenisKelamin}}</td>
-                  <td>{{k.tanggalLahir}}</td>
-                  <td>{{k.alamat}}</td>
-                  <td>
-                      <button type="button" class="btn btn-success">
-                        <i class="glyphicon glyphicon-pencil"></i>
-                      </button>
-                      <button type="button" class="btn btn-danger">
-                        <i class="glyphicon glyphicon-trash"></i>
-                      </button>
-                  </td>
-              </tr>
-          </tbody>
+            <thead>
+                <tr>
+                    <th>ID Karyawan</th>
+                    <th>Nama Karyawan</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Alamat</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="k in karyawan.dataKaryawan">
+                <tr>
+                    <td>{{k.idKaryawan}}</td>
+                    <td>{{k.nama}}</td>
+                    <td>{{k.jenisKelamin}}</td>
+                    <td>{{k.tanggalLahir}}</td>
+                    <td>{{k.alamat}}</td>
+                    <td>
+                        <button type="button" ng-click="karyawan.editKaryawan(k)" data-toggle="modal" data-target="#modal" class="btn btn-success">
+                            <i class="glyphicon glyphicon-pencil"></i>
+                        </button>
+                        <button ng-click="karyawan.deleteKaryawan(k.idKaryawan)" type="button" class="btn btn-danger">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
 
     <div class="text-center" ng-hide="karyawan.dataKaryawan.length !== 0">
-        Data Karyawan Masih kosong, silahkan tambahkan data <a href="#">disini</a>
+        Data Karyawan Masih kosong, silahkan tambahkan data <a ng-click="karyawan.newKaryawan()" href="" data-toggle="modal" data-target="#modal">disini</a>
     </div>
 
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 ng-show="karyawan.enable" class="modal-title" id="myModalLabel">Tambah Karyawan</h4>
+                <h4 ng-hide="karyawan.enable" class="modal-title" id="myModalLabel">Edit Karyawan</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div ng-hide="karyawan.enable" class="form-group">
+                        <label>ID Karyawan</label>
+                        <input ng-model="karyawan.inputKaryawan.idKaryawan" type="text" class="form-control" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Karyawan</label>
+                        <input ng-model="karyawan.inputKaryawan.nama" type="text" class="form-control" placeholder="Masukkan Nama Karyawan">
+                    </div>
+                    <div class="form-group">
+                        <label>Jenis Kelamin</label>
+                        <input ng-model="karyawan.inputKaryawan.jenisKelamin" type="text" class="form-control" placeholder="Masukkan Jenis Kelamin">
+                    </div>
+                    <div class="form-group">
+                        <label>Tanggal Lahir</label>
+                        <input ng-model="karyawan.inputKaryawan.tanggalLahir" type="date" class="form-control" placeholder="Masukkan Tanggal Lahir">
+                    </div>
+                    <div class="form-group">
+                        <label>Alamat</label>
+                        <input ng-model="karyawan.inputKaryawan.alamat" type="text" class="form-control" placeholder="Masukkan Alamat">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                <button ng-click="karyawan.saveKaryawan(karyawan.inputKaryawan)" ng-show="karyawan.enable" type="button" class="btn btn-primary" data-dismiss="modal">Simpan</button>
+                <button ng-click="karyawan.updateKaryawan(karyawan.inputKaryawan, karyawan.inputKaryawan.idKaryawan)" ng-hide="karyawan.enable" type="button" class="btn btn-primary" data-dismiss="modal">Update</button>
+            </div>
+        </div>
+    </div>
 </div>
