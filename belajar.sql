@@ -10,7 +10,7 @@
  */
 
 create table if not exists tb_karyawan (
-    idKaryawan int not null auto_increment,
+    idKaryawan varchar(150) not null,
     nama varchar(50) not null,
     jenisKelamin varchar(5) not null,
     tanggalLahir date not null,
