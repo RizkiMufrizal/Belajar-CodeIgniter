@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+
+ @Author Rizki Mufrizal <mufrizalrizki@gmail.com>
+ @Since Jan 24, 2016
+ @Time 9:45:49 PM
+ @Encoding UTF-8
+ @Project Belajar-CodeIgniter
+ @Package Expression package is undefined on line 9, column 13 in Templates/Other/html.html.
+
+-->
+
+<h1 class="text-center">Data Karyawan</h1>
+
+<div class="container">
+
+    <div ng-show="karyawan.dataKaryawan.length !== 0">
+        <table class="table table-hover table-bordered table-responsive">
+          <thead>
+              <tr>
+                  <th>ID Karyawan</th>
+                  <th>Nama Karyawan</th>
+                  <th>Jenis Kelamin</th>
+                  <th>Tanggal Lahir</th>
+                  <th>Alamat</th>
+                  <th>Aksi</th>
+              </tr>
+          </thead>
+          <tbody ng-repeat="k in karyawan.dataKaryawan">
+              <tr>
+                  <td>{{k.idKaryawan}}</td>
+                  <td>{{k.nama}}</td>
+                  <td>{{k.jenisKelamin}}</td>
+                  <td>{{k.tanggalLahir}}</td>
+                  <td>{{k.alamat}}</td>
+                  <td>
+                      <button type="button" class="btn btn-success">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                      </button>
+                      <button type="button" class="btn btn-danger">
+                        <i class="glyphicon glyphicon-trash"></i>
+                      </button>
+                  </td>
+              </tr>
+          </tbody>
+        </table>
+    </div>
+
+    <div class="text-center" ng-hide="karyawan.dataKaryawan.length !== 0">
+        Data Karyawan Masih kosong, silahkan tambahkan data <a href="#">disini</a>
+    </div>
+
+</div>
