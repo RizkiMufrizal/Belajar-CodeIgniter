@@ -30,6 +30,9 @@
       getKaryawans: function(page, size) {
         return baseUrl + '/index.php/api/KaryawanRestController/karyawans?page=' + page + '&size=' + size;
       },
+      getKaryawan: function(key, value) {
+        return baseUrl + '/index.php/api/KaryawanRestController/karyawan?key=' + key + '&value=' + value;
+      },
       saveKaryawan: function() {
         return baseUrl + '/index.php/api/KaryawanRestController/karyawan';
       },
