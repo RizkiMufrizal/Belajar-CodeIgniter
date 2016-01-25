@@ -21,6 +21,9 @@
       getKaryawans: function(page, size) {
         return $http.get(UrlService.getKaryawans(page, size));
       },
+      getKaryawan: function(key, value) {
+        return $http.get(UrlService.getKaryawan(key, value));
+      },
       saveKaryawan: function(karyawan) {
         return $http.post(UrlService.saveKaryawan(), karyawan);
       },
