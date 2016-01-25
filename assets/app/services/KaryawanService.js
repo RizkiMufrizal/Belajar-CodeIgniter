@@ -20,6 +20,15 @@
     return {
       getKaryawans: function(page, size) {
         return $http.get(UrlService.getKaryawans(page, size));
+      },
+      saveKaryawan: function(karyawan) {
+        return $http.post(UrlService.saveKaryawan(), karyawan);
+      },
+      updateKaryawan: function(karyawan, idKaryawan) {
+        return $http.put(UrlService.updateKaryawan(idKaryawan), karyawan);
+      },
+      deleteKaryawan: function(idKaryawan) {
+        return $http.delete(UrlService.deleteKaryawan(idKaryawan));
       }
     };
   }
