@@ -23,6 +23,12 @@
     return {
       homeTemplate: function() {
         return baseUrl + '/assets/app/templates/HomeTemplate.html';
+      },
+      karyawanTemplate: function() {
+        return baseUrl + '/assets/app/templates/KaryawanTemplate.html';
+      },
+      getKaryawans: function(page, size) {
+        return baseUrl + '/index.php/api/KaryawanRestController/karyawans?page=' + page + '&size=' + size;
       }
     };
 
