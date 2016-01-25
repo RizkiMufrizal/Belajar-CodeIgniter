@@ -40,6 +40,24 @@
             ]);
           }]
         }
+      })
+      .state('karyawan', {
+        url: '/karyawan',
+        views: {
+          'lazyLoadView': {
+            template: '<ng-karyawan></ng-karyawan>'
+          }
+        },
+        resolve: {
+          loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+            return $ocLazyLoad.load([
+              baseUrl + '/assets/app/services/UrlService.js',
+              baseUrl + '/assets/app/services/KaryawanService.js',
+              baseUrl + '/assets/app/controllers/KaryawanController.js',
+              baseUrl + '/assets/app/directives/ngKaryawan.js'
+            ]);
+          }]
+        }
       });
 
   });
