@@ -21,6 +21,7 @@
     var karyawan = this;
 
     karyawan.dataKaryawan = {};
+    karyawan.inputKaryawan = {};
 
     function getKaryawans() {
       KaryawanService.getKaryawans(1, 5).success(function(data) {
@@ -29,6 +30,41 @@
     }
 
     getKaryawans();
+
+    karyawan.newKaryawan = function() {
+      karyawan.inputKaryawan = {};
+      karyawan.enable = true;
+    };
+
+    karyawan.saveKaryawan = function(k) {
+      KaryawanService.saveKaryawan(k).success(function(data) {
+        getKaryawans();
+        alert('Data Tersimpan');
+      });
+    };
+
+    karyawan.editKaryawan = function(k) {
+      karyawan.inputKaryawan.idKaryawan = k.idKaryawan;
+      karyawan.inputKaryawan.nama = k.nama;
+      karyawan.inputKaryawan.jenisKelamin = k.jenisKelamin;
+      karyawan.inputKaryawan.tanggalLahir = new Date(k.tanggalLahir);
+      karyawan.inputKaryawan.alamat = k.alamat;
+      karyawan.enable = false;
+    };
+
+    karyawan.updateKaryawan = function(k) {
+      KaryawanService.updateKaryawan(k, k.idKaryawan).success(function(data) {
+        getKaryawans();
+        alert('Data Berhasil DiUpdate');
+      });
+    };
+
+    karyawan.deleteKaryawan = function(idKaryawan) {
+      KaryawanService.deleteKaryawan(idKaryawan).success(function(data) {
+        getKaryawans();
+        alert('Data berhasil dihapus');
+      });
+    };
 
   }
 
