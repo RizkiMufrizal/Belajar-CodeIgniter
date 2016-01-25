@@ -29,6 +29,15 @@
       },
       getKaryawans: function(page, size) {
         return baseUrl + '/index.php/api/KaryawanRestController/karyawans?page=' + page + '&size=' + size;
+      },
+      saveKaryawan: function() {
+        return baseUrl + '/index.php/api/KaryawanRestController/karyawan';
+      },
+      updateKaryawan: function(idKaryawan) {
+        return baseUrl + '/index.php/api/KaryawanRestController/karyawan?idKaryawan=' + idKaryawan;
+      },
+      deleteKaryawan: function(idKaryawan) {
+        return baseUrl + '/index.php/api/KaryawanRestController/karyawan?idKaryawan=' + idKaryawan;
       }
     };
 
