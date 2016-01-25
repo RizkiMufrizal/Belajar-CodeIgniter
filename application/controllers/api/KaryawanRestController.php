@@ -14,8 +14,10 @@ require APPPATH . '/libraries/REST_Controller.php';
 
 class KaryawanRestController extends REST_Controller {
 
-    public function __construct() {
+    public function __construct($config = 'rest') {
         parent::__construct();
+        header('Access-Control-Allow-Origin: *');
+        header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
         $this->load->model('Karyawan');
     }
 
