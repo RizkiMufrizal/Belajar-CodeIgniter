@@ -12,8 +12,13 @@
  */
 class Barang extends CI_Model {
 
-    public function getBarang($num, $offset) {
+    public function getBarangs($num, $offset) {
         return $this->db->get('tb_barang', $num, $offset);
+    }
+
+    public function getBarang($idBarang) {
+        $this->db->where('idBarang', $idBarang);
+        return $this->db->get('tb_barang');
     }
 
     public function getRowBarang() {
@@ -29,6 +34,24 @@ class Barang extends CI_Model {
             'tanggalKadaluarsa' => $dataBarang['tanggalKadaluarsa']
         );
         $this->db->insert('tb_barang', $val);
+    }
+
+    public function updateBarang($dataBarang, $idBarang) {
+        $val = array(
+            'namaBarang' => $dataBarang['namaBarang'],
+            'jenisBarang' => $dataBarang['jenisBarang'],
+            'gambar' => $dataBarang['gambar'],
+            'tanggalKadaluarsa' => $dataBarang['tanggalKadaluarsa']
+        );
+        $this->db->where('idBarang', $idBarang);
+        $this->db->update('tb_barang', $val);
+    }
+
+    public function deleteBarang($idBarang) {
+        $val = array(
+            'idBarang' => $idBarang
+        );
+        $this->db->delete('tb_barang', $val);
     }
 
 }
