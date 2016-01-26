@@ -65,3 +65,7 @@ $route['admin']['GET'] = 'AdminController/index';
 //barang
 $route['barang']['GET'] = 'BarangController/index';
 $route['barang/new']['GET'] = 'BarangController/newBarang';
+$route['barang/save']['POST'] = 'BarangController/saveBarang';
+$route['barang/edit/(:any)']['GET'] = 'BarangController/editBarang/$1';
+$route['barang/update']['POST'] = 'BarangController/updateBarang';
+$route['barang/delete/(:any)']['GET'] = 'BarangController/deleteBarang/$1';
