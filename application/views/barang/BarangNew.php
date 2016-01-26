@@ -20,31 +20,31 @@
 
         <?php $this->load->view('layout/Header') ?>
 
-        <?php echo $error;?>
-        
+        <?php echo $error; ?>
+
         <div class="container">
-            <?php echo form_open_multipart('BarangController/saveBarang'); ?>
-            
+            <?php echo form_open_multipart('barang/save'); ?>
+
             <div class="form-group">
                 <label>Nama Barang</label>
                 <input type="text" name="namaBarang" class="form-control" placeholder="Masukkan Nama Barang">
             </div>
-            
+
             <div class="form-group">
                 <label>Jenis Barang</label>
                 <input type="text" name="jenisBarang" class="form-control" placeholder="Masukkan Jenis Barang">
             </div>
-            
+
             <div class="form-group">
                 <label>gambar Barang</label>
                 <input class="form-control" type="file" name="gambar">
             </div>
-            
+
             <div class="form-group">
                 <label>Tanggal Kadaluarsa</label>
                 <input type="date" name="tanggalKadaluarsa" class="form-control" placeholder="Masukkan Tanggal Kadaluarsa">
             </div>
-            
+
             <button type="submit" class="btn btn-primary">Simpan</button>
 
         </div>
