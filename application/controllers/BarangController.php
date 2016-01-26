@@ -53,7 +53,7 @@ class BarangController extends CI_Controller {
         $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $data['pagination'] = $this->pagination->create_links();
 
-        $data['barangs'] = $this->Barang->getBarang($config['per_page'], $data['page'])->result();
+        $data['barangs'] = $this->Barang->getBarangs($config['per_page'], $data['page'])->result();
 
         $this->load->view('barang/BarangView', $data);
     }
@@ -63,7 +63,6 @@ class BarangController extends CI_Controller {
     }
 
     public function saveBarang() {
-
         $namaFile = $this->uuid->v4();
         $config['upload_path'] = $this->gambarPath;
         $config['allowed_types'] = 'gif|jpg|png';
@@ -85,6 +84,28 @@ class BarangController extends CI_Controller {
             $this->Barang->saveBarang($data);
             redirect('barang');
         }
+    }
+
+    public function editBarang($idBarang) {
+        $data['barang'] = $this->Barang->getBarang($idBarang)->result();
+        $this->load->view('barang/BarangEdit', $data);
+    }
+
+    public function updateBarang() {
+        $idBarang = $this->input->post('idBarang');
+        $data = array(
+            'namaBarang' => $this->input->post('namaBarang'),
+            'jenisBarang' => $this->input->post('jenisBarang'),
+            'gambar' => $this->input->post('gambar'),
+            'tanggalKadaluarsa' => $this->input->post('tanggalKadaluarsa')
+        );
+        $this->Barang->updateBarang($data, $idBarang);
+        redirect('barang');
+    }
+
+    public function deleteBarang($idBarang) {
+        $this->Barang->deleteBarang($idBarang);
+        redirect('barang');
     }
 
 }
