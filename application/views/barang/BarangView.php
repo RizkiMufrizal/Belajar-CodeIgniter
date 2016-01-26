@@ -56,12 +56,16 @@
                                 <td><?php echo $b->tanggalKadaluarsa; ?></td>
                                 <td><?php echo $b->gambar; ?></td>
                                 <td class="text-center">
-                                    <button class="btn btn-success"> 
-                                        <i class="glyphicon glyphicon-pencil"></i>
-                                    </button>
-                                    <button class="btn btn-danger"> 
-                                        <i class="glyphicon glyphicon-trash"></i>
-                                    </button>
+                                    <a href="<?php echo base_url(); ?>index.php/barang/edit/<?php echo $b->idBarang; ?>">
+                                        <button class="btn btn-success"> 
+                                            <i class="glyphicon glyphicon-pencil"></i>
+                                        </button>
+                                    </a>
+                                    <a href="<?php echo base_url(); ?>index.php/barang/delete/<?php echo $b->idBarang; ?>">
+                                        <button class="btn btn-danger"> 
+                                            <i class="glyphicon glyphicon-trash"></i>
+                                        </button>
+                                    </a>
                                 </td>
                             </tr>
 
