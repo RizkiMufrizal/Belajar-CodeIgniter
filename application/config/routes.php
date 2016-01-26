@@ -59,4 +59,9 @@ $route['login']['GET'] = 'UserController/index';
 $route['login']['POST'] = 'UserController/loginProcess';
 $route['logout']['GET'] = 'UserController/LogoutProcess';
 
+//admin
 $route['admin']['GET'] = 'AdminController/index';
+
+//barang
+$route['barang']['GET'] = 'BarangController/index';
+$route['barang/new']['GET'] = 'BarangController/newBarang';
