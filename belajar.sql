@@ -26,3 +26,12 @@ create table if not exists tb_user (
     role varchar(10),
     primary key(email)
 )Engine=InnoDB;
+
+create table if not exists tb_barang (
+    idBarang varchar(150) not null,
+    namaBarang varchar(50) not null,
+    jenisBarang  varchar(5) not null,
+    gambar varchar(150) not null,
+    tanggalKadaluarsa date,
+    primary key(idBarang)
+)Engine=InnoDB;
