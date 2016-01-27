@@ -39,13 +39,15 @@
                 <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
                 <label for="inputPassword" class="sr-only">Password</label>
                 <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-                <input type="hidden" name="<?php echo $csrf['name'];?>" value="<?php echo $csrf['hash'];?>" />
                 <div class="checkbox">
                     <label>
                         <input type="checkbox" value="remember-me"> Remember me
                     </label>
                 </div>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            
+                <a href="<?php echo base_url(); ?>index.php/signup">Register</a>
+                
             </form>
 
         </div>
