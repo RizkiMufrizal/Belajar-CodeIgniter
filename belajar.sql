@@ -21,7 +21,7 @@ create table if not exists tb_karyawan (
 create table if not exists tb_user (
     email varchar(50) not null,
     nama varchar(50) not null,
-    password varchar(50) not null,
+    password varchar(150) not null,
     enable tinyint,
     role varchar(10),
     primary key(email)
