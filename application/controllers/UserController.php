@@ -20,11 +20,7 @@ class UserController extends CI_Controller {
     function index() {
         $session = $this->session->userdata('isLogin');
         if ($session == FALSE) {
-            $dataCsrf['csrf'] = array(
-                'name' => $this->security->get_csrf_token_name(),
-                'hash' => $this->security->get_csrf_hash()
-            );
-            $this->load->view('user/LoginView', $dataCsrf);
+            $this->load->view('user/LoginView');
         } else {
             redirect('admin');
         }
@@ -34,7 +30,9 @@ class UserController extends CI_Controller {
         $email = $this->input->post('email');
         $password = $this->input->post('password');
 
-        if ($this->User->getUserLogin($email, md5($password)) == 1) {
+        $user = $this->User->getUserLogin($email)->result();
+
+        if ($this->bcrypt->check_password($password, $user[0]->password)) {
             $this->session->set_userdata(array(
                 'isLogin' => TRUE,
                 'username' => $email
@@ -47,6 +45,20 @@ class UserController extends CI_Controller {
 
     public function LogoutProcess() {
         $this->session->unset_userdata(array('isLogin', 'username'));
+        redirect('login');
+    }
+
+    public function newSignUp() {
+        $this->load->view('user/SignUpView');
+    }
+
+    public function signUpProcess() {
+        $data = array(
+            'email' => $this->input->post('email'),
+            'nama' => $this->input->post('nama'),
+            'password' => $this->bcrypt->hash_password($this->input->post('password'))
+        );
+        $this->User->saveUser($data);
         redirect('login');
     }
 
