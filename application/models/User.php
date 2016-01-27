@@ -12,11 +12,21 @@
  */
 class User extends CI_Model {
 
-    public function getUserLogin($email, $password) {
+    public function getUserLogin($email) {
         $this->db->where('email', $email);
-        $this->db->where('password', $password);
-        $this->db->from('tb_user');
-        return $this->db->count_all_results();
+        $this->db->select('password');
+        return $this->db->get('tb_user');
+    }
+
+    public function saveUser($dataUser) {
+        $val = array(
+            'email' => $dataUser['email'],
+            'nama' => $dataUser['nama'],
+            'password' => $dataUser['password'],
+            'enable' => TRUE,
+            'role' => 'ROLE_ADMIN'
+        );
+        $this->db->insert('tb_user', $val);
     }
 
 }
