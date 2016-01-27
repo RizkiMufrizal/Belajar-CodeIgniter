@@ -58,6 +58,8 @@ $route['translate_uri_dashes'] = FALSE;
 $route['login']['GET'] = 'UserController/index';
 $route['login']['POST'] = 'UserController/loginProcess';
 $route['logout']['GET'] = 'UserController/LogoutProcess';
+$route['signup']['GET'] = 'UserController/newSignUp';
+$route['signup']['POST'] = 'UserController/signUpProcess';
 
 //admin
 $route['admin']['GET'] = 'AdminController/index';
