@@ -13,4 +13,4 @@ Teknologi yang digunakan :
 
 Untuk melihat aplikasi, silahkan buka pada url : http://127.0.0.1/Belajar-CodeIgniter/index.php/admin dan http://127.0.0.1/Belajar-CodeIgniter/index.php/barang
 
-Note : password dihash dengan algoritma MD5
+Note : password dihash dengan algoritma Bcrypt
